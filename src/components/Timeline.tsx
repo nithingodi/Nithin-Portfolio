@@ -5,48 +5,45 @@ interface TimelineItemProps {
   title: string;
   subtitle: string;
   date: string;
-  children?: ReactNode;
+  content: ReactNode;
 }
 
-const TimelineItem = ({ title, subtitle, date, children }: TimelineItemProps) => {
-  return (
-    <div className="mb-8 flex animate-fade-in">
-      <div className="flex flex-col items-center mr-4">
-        <div className="rounded-full h-4 w-4 bg-analytics-blue flex items-center justify-center"></div>
-        <div className="h-full w-0.5 bg-gray-200"></div>
-      </div>
-      
-      <div className="bg-white rounded-lg shadow-md p-6 flex-1">
-        <span className="text-sm text-gray-500 font-medium">{date}</span>
-        <h3 className="text-xl font-bold mt-1">{title}</h3>
-        <h4 className="text-lg text-gray-600 mb-3">{subtitle}</h4>
-        {children && <div className="mt-2 text-gray-700">{children}</div>}
-      </div>
-    </div>
-  );
-};
-
 interface TimelineProps {
-  items: {
-    title: string;
-    subtitle: string;
-    date: string;
-    content?: ReactNode;
-  }[];
+  items: TimelineItemProps[];
 }
 
 const Timeline = ({ items }: TimelineProps) => {
   return (
-    <div className="my-8">
+    <div className="space-y-10">
       {items.map((item, index) => (
-        <TimelineItem
+        <div 
           key={index}
-          title={item.title}
-          subtitle={item.subtitle}
-          date={item.date}
+          className="bg-white rounded-lg shadow-md p-6 animate-fade-in relative overflow-hidden"
         >
-          {item.content}
-        </TimelineItem>
+          <div className="absolute w-1 bg-analytics-blue h-full top-0 left-6 -translate-x-1/2 z-0"></div>
+          
+          <div className="relative z-10 flex items-start">
+            <div className="bg-analytics-blue text-white p-3 rounded-full mr-4 flex-shrink-0">
+              <span className="font-bold">{index + 1}</span>
+            </div>
+            
+            <div className="flex-grow">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <div>
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <h4 className="text-lg text-gray-600">{item.subtitle}</h4>
+                </div>
+                <span className="bg-gray-100 px-3 py-1 rounded-full text-sm mt-2 md:mt-0">
+                  {item.date}
+                </span>
+              </div>
+              
+              <div className="text-gray-700">
+                {item.content}
+              </div>
+            </div>
+          </div>
+        </div>
       ))}
     </div>
   );
