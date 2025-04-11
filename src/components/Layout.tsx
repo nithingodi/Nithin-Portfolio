@@ -1,7 +1,8 @@
 
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BarChart3, Book, Briefcase, Home, LucideIcon, Star } from 'lucide-react';
+import { BarChart3, Book, Briefcase, Home, LucideIcon, Star, Edit, Plus } from 'lucide-react';
+import { Button } from './ui/button';
 
 interface NavItemProps {
   label: string;
@@ -16,7 +17,7 @@ const NavItem = ({ label, icon: Icon, path, active }: NavItemProps) => {
   return (
     <div 
       className={`flex items-center gap-2 px-4 py-2 rounded-md cursor-pointer transition-all ${
-        active ? 'bg-analytics-blue text-white' : 'hover:bg-gray-100'
+        active ? 'bg-analytics-blue text-white' : 'text-gray-300 hover:bg-gray-800/50 hover:text-white'
       }`}
       onClick={() => navigate(path)}
     >
@@ -44,16 +45,16 @@ const Layout = ({ children, title, activePage = '' }: LayoutProps) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
+    <div className="min-h-screen bg-gray-900 text-gray-100">
+      <header className="bg-gray-800 shadow-lg border-b border-gray-700">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 
-            className="text-2xl font-bold cursor-pointer"
+            className="text-2xl font-bold cursor-pointer text-white"
             onClick={() => navigate('/')}
           >
             Sai Nithin Godi
           </h1>
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             {navItems.map((item) => (
               <NavItem
                 key={item.path}
@@ -68,9 +69,25 @@ const Layout = ({ children, title, activePage = '' }: LayoutProps) => {
       </header>
       
       <main className="container mx-auto px-4 py-8">
-        {title && <h2 className="text-3xl font-bold mb-6">{title}</h2>}
+        {title && <h2 className="text-3xl font-bold mb-6 text-white">{title}</h2>}
         {children}
       </main>
+      
+      {/* Floating edit buttons */}
+      <div className="fixed bottom-6 right-6 flex flex-col gap-3">
+        <Button 
+          className="rounded-full p-3 w-12 h-12 flex items-center justify-center bg-analytics-blue hover:bg-blue-700"
+          title="Edit content"
+        >
+          <Edit size={20} />
+        </Button>
+        <Button 
+          className="rounded-full p-3 w-12 h-12 flex items-center justify-center bg-green-600 hover:bg-green-700"
+          title="Add new section"
+        >
+          <Plus size={20} />
+        </Button>
+      </div>
     </div>
   );
 };

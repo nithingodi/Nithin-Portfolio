@@ -54,12 +54,12 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				analytics: {
-					blue: "#3366cc",
-					green: "#66aa00",
-					purple: "#9b87f5",
-					red: "#dc3912",
-					orange: "#ff9900",
-					teal: "#45b7cd",
+					blue: "#3b82f6", // Enhanced blue
+					green: "#10b981", // Enhanced green
+					purple: "#8b5cf6", // Enhanced purple
+					red: "#ef4444",   // Enhanced red
+					orange: "#f59e0b", // Enhanced orange
+					teal: "#06b6d4",  // Enhanced teal
 				}
 			},
 			borderRadius: {
@@ -87,6 +87,14 @@ export default {
 				'scale-in': {
 					'0%': { transform: 'scale(0.9)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'bounce': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' }
 				}
 			},
 			animation: {
@@ -94,7 +102,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'slide-in': 'slide-in 0.5s ease-out',
-				'scale-in': 'scale-in 0.4s ease-out'
+				'scale-in': 'scale-in 0.4s ease-out',
+				'bounce': 'bounce 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
 			}
 		}
 	},

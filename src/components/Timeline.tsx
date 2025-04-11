@@ -18,7 +18,7 @@ const Timeline = ({ items }: TimelineProps) => {
       {items.map((item, index) => (
         <div 
           key={index}
-          className="bg-white rounded-lg shadow-md p-6 animate-fade-in relative overflow-hidden"
+          className="bg-gray-800/50 border border-gray-700 rounded-lg shadow-md p-6 animate-fade-in relative overflow-hidden"
         >
           <div className="absolute w-1 bg-analytics-blue h-full top-0 left-6 -translate-x-1/2 z-0"></div>
           
@@ -30,15 +30,15 @@ const Timeline = ({ items }: TimelineProps) => {
             <div className="flex-grow">
               <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
                 <div>
-                  <h3 className="text-xl font-bold">{item.title}</h3>
-                  <h4 className="text-lg text-gray-600">{item.subtitle}</h4>
+                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                  <h4 className="text-lg text-gray-400">{item.subtitle}</h4>
                 </div>
-                <span className="bg-gray-100 px-3 py-1 rounded-full text-sm mt-2 md:mt-0">
+                <span className="bg-gray-700 px-3 py-1 rounded-full text-sm text-gray-300 mt-2 md:mt-0">
                   {item.date}
                 </span>
               </div>
               
-              <div className="text-gray-700">
+              <div className="text-gray-300">
                 {item.content}
               </div>
             </div>
