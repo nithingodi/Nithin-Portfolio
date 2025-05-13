@@ -14,8 +14,6 @@ if (!rootElement) {
 // Create root with explicit error handling
 try {
   const root = createRoot(rootElement);
-  
-  // Render without StrictMode to prevent double mounting issues
   root.render(<App />);
 } catch (error) {
   console.error("Error rendering application:", error);
