@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Toaster as SonnerToaster } from "sonner";
 
-type ToasterProps = React.ComponentPropsWithoutRef<typeof SonnerToaster>;
+type ToasterProps = React.ComponentProps<typeof SonnerToaster>;
 
 const Toaster = ({ ...props }: ToasterProps) => {
   return (

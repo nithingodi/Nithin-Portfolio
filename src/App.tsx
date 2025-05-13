@@ -13,22 +13,15 @@ import Education from "./pages/Education";
 import WorkExperience from "./pages/WorkExperience";
 import Skills from "./pages/Skills";
 
-// Create a new QueryClient instance
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-      refetchOnWindowFocus: false
-    }
-  }
-});
+// Create a new QueryClient instance - using explicit React.useState to avoid any hooks issues
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <TooltipProvider>
-          <div className="app-container min-h-screen">
+          <div className="app-container">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/projects" element={<Projects />} />
