@@ -16,7 +16,11 @@ if (!rootElement) {
 // Create root and render with proper error handling
 try {
   const root = createRoot(rootElement);
-  root.render(<App />);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 } catch (error) {
   console.error("Error rendering application:", error);
 }
